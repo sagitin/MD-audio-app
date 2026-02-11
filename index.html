@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audio Button App</title>
+  <style>
+    body {
+      background: #111;
+      color: white;
+      text-align: center;
+      font-family: Arial;
+      margin-top: 60px;
+    }
+
+    button {
+      display: block;
+      width: 80%;
+      max-width: 300px;
+      margin: 15px auto;
+      padding: 20px;
+      font-size: 18px;
+      border-radius: 12px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Looping Sound Player</h2>
+
+<button onclick="playSound('BattleTheme.mp3')">Sound 1</button>
+<button onclick="playSound('KeyCard.mp3')">Sound 2</button>
+<button onclick="playSound('Climax.mp3')">Sound 3</button>
+<button onclick="stopSound()">Stop</button>
+
+<script>
+  let audio = new Audio();
+  audio.loop = true;
+
+  function playSound(file) {
+    audio.pause();
+    audio = new Audio(file);
+    audio.loop = true;
+    audio.play();
+  }
+
+  function stopSound() {
+    audio.pause();
+  }
+</script>
+
+</body>
+</html>
