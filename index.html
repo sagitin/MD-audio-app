@@ -4,31 +4,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Audio Button App</title>
   <style>
-    body {
+  body {
     margin: 0;
-    text-align: center;
     font-family: Arial;
     color: white;
 
     background-image: url("Field1.png");
-    background-size: cover;        /* fills screen */
-    background-position: center;   /* keeps it centered */
-    background-repeat: no-repeat;  /* no tiling */
-    background-attachment: fixed;  /* stays still when scrolling */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  .button-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
   button {
-    display: block;
-    width: 80%;
-    max-width: 300px;
-    margin: 15px auto;
-    padding: 20px;
-    font-size: 18px;
-    border-radius: 12px;
+    padding: 15px 20px;
+    font-size: 16px;
+    border-radius: 10px;
     border: none;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
   }
+</style>
 
-  </style>
 </head>
 <body>
 
