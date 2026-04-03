@@ -68,9 +68,9 @@
 
   <!-- Buttons -->
   <div class="button-container">
-    <button onclick="playSound('BattleTheme.mp3')">Battle Theme</button>
-    <button onclick="playSound('KeyCard.mp3')">Key Card</button>
-    <button onclick="playSound('Climax.mp3')">Climax</button>
+    <button onclick="playSound('battle')">Battle Theme</button>
+    <button onclick="playSound('keycard')">Key Card</button>
+    <button onclick="playSound('climax')">Climax</button>
     <button onclick="stopSound()">Stop</button>
   </div>
 
@@ -78,7 +78,19 @@
     let audio = new Audio();
     audio.loop = true;
 
-    function playSound(file) {
+    let currentTheme = 1;
+
+    function playSound(type) {
+      let file = "";
+
+      if (type === "battle") {
+        file = `BattleTheme${currentTheme}.mp3`;
+      } else if (type === "keycard") {
+        file = `KeyCard${currentTheme}.mp3`;
+      } else if (type === "climax") {
+        file = `Climax${currentTheme}.mp3`;
+      }
+
       audio.pause();
       audio = new Audio(file);
       audio.loop = true;
@@ -93,10 +105,13 @@
       const theme = document.getElementById("themeSelect").value;
 
       if (theme === "theme1") {
+        currentTheme = 1;
         document.body.style.backgroundImage = "url('Field1.png')";
       } else if (theme === "theme2") {
+        currentTheme = 2;
         document.body.style.backgroundImage = "url('Field2.png')";
       } else if (theme === "theme3") {
+        currentTheme = 3;
         document.body.style.backgroundImage = "url('Field3.png')";
       }
     }
