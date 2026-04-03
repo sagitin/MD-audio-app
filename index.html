@@ -3,65 +3,104 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Audio Button App</title>
+
   <style>
-  body {
-  margin: 0;
-  height: 100vh;
-  font-family: Arial;
-  color: white;
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: Arial;
+      color: white;
 
-  background-image: url("Field1.png");
-  background-size: contain;      /* shows full image */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: black;       /* fills empty space */
-}
+      background-image: url("Field1.png");
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: black;
+    }
 
+    /* Top-left dropdown */
+    .top-bar {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+    }
 
-  .button-container {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+    select {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+    }
 
-  button {
-    padding: 15px 20px;
-    font-size: 16px;
-    border-radius: 10px;
-    border: none;
-    background: rgba(0, 0, 0, 0.6);
-    color: white;
-  }
-</style>
+    /* Bottom-right buttons */
+    .button-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
+    button {
+      padding: 15px 20px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: none;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+    }
+  </style>
 </head>
+
 <body>
 
-<h2>Theme 1</h2>
+  <!-- Theme dropdown -->
+  <div class="top-bar">
+    <select id="themeSelect" onchange="changeTheme()">
+      <option value="theme1">Theme 1</option>
+      <option value="theme2">Theme 2</option>
+      <option value="theme3">Theme 3</option>
+    </select>
+  </div>
 
-<button onclick="playSound('BattleTheme.mp3')">Battle Theme</button>
-<button onclick="playSound('KeyCard.mp3')">Key Card</button>
-<button onclick="playSound('Climax.mp3')">Climax</button>
-<button onclick="stopSound()">Stop</button>
+  <!-- Buttons -->
+  <div class="button-container">
+    <button onclick="playSound('BattleTheme.mp3')">Battle Theme</button>
+    <button onclick="playSound('KeyCard.mp3')">Key Card</button>
+    <button onclick="playSound('Climax.mp3')">Climax</button>
+    <button onclick="stopSound()">Stop</button>
+  </div>
 
-<script>
-  let audio = new Audio();
-  audio.loop = true;
-
-  function playSound(file) {
-    audio.pause();
-    audio = new Audio(file);
+  <script>
+    let audio = new Audio();
     audio.loop = true;
-    audio.play();
-  }
 
-  function stopSound() {
-    audio.pause();
-  }
-</script>
+    function playSound(file) {
+      audio.pause();
+      audio = new Audio(file);
+      audio.loop = true;
+      audio.play();
+    }
+
+    function stopSound() {
+      audio.pause();
+    }
+
+    function changeTheme() {
+      const theme = document.getElementById("themeSelect").value;
+
+      if (theme === "theme1") {
+        document.body.style.backgroundImage = "url('Field1.png')";
+      } else if (theme === "theme2") {
+        document.body.style.backgroundImage = "url('Field2.png')";
+      } else if (theme === "theme3") {
+        document.body.style.backgroundImage = "url('Field3.png')";
+      }
+    }
+  </script>
 
 </body>
 </html>
